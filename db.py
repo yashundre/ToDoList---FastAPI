@@ -15,7 +15,7 @@ def create(data):
 
 
 def all():
-    response = collection.find({},{"_id":0,"name":1,"description":1})
+    response = collection.find({},{"_id":0,"task":1,"description":1})
     data = []
     for i in response:
         # i["_id"] = str(i["_id"]) 
@@ -24,17 +24,17 @@ def all():
     
 
 def get_one(condition):
-    response = collection.find_one({"name":condition})
+    response = collection.find_one({"task":condition})
     response["_id"] = str(response["_id"])
     return response
 
 def update(data):
     data = dict(data)
-    response = collection.update_one({"name":data["name"]},{"$set":{"description":data["description"]}})
+    response = collection.update_one({"task":data["task"]},{"$set":{"description":data["description"]}})
     return response.modified_count
 
 def delete(name):
-    response = collection.delete_one({"name":name})
+    response = collection.delete_one({"task":name})
     return response.deleted_count
 
 

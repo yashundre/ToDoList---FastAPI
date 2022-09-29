@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
 class Todo(BaseModel):
-    name: str
+    task: str
     description: str
